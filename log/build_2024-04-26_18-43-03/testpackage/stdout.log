@@ -1,0 +1,14 @@
+running develop
+running egg_info
+writing testpackage.egg-info/PKG-INFO
+writing dependency_links to testpackage.egg-info/dependency_links.txt
+deleting testpackage.egg-info/entry_points.txt
+writing requirements to testpackage.egg-info/requires.txt
+writing top-level names to testpackage.egg-info/top_level.txt
+reading manifest file 'testpackage.egg-info/SOURCES.txt'
+writing manifest file 'testpackage.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/dinesh/ros2_ws/install/testpackage/lib/python3.10/site-packages/testpackage.egg-link (link to .)
+
+Installed /home/dinesh/ros2_ws/build/testpackage
+running symlink_data

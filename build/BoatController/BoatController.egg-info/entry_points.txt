@@ -1,0 +1,8 @@
+[console_scripts]
+positionPublisher = BoatController.positionReader:main
+thrustPublisher = BoatController.asyncPublisher:main
+thrustSubscriber = BoatController.thrustPublisher:main
+velocityYawPublisher = BoatController.velocityYawSetter:main
+velocityYawSetter = BoatController.velocityYawControl:main
+waypointSubscriber = BoatController.destinationSetter:main
+

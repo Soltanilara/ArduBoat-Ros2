@@ -1,0 +1,22 @@
+[0.579s] Invoking command in '/home/dinesh/ros2_ws/build/BoatController': PYTHONPATH=/home/dinesh/ros2_ws/build/BoatController/prefix_override:/home/dinesh/ros2_ws/install/BoatController/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/dinesh/ros2_ws/build/BoatController/build --no-deps symlink_data
+[0.749s] running develop
+[0.849s] running egg_info
+[0.849s] writing BoatController.egg-info/PKG-INFO
+[0.850s] writing dependency_links to BoatController.egg-info/dependency_links.txt
+[0.850s] writing entry points to BoatController.egg-info/entry_points.txt
+[0.850s] writing requirements to BoatController.egg-info/requires.txt
+[0.850s] writing top-level names to BoatController.egg-info/top_level.txt
+[0.851s] reading manifest file 'BoatController.egg-info/SOURCES.txt'
+[0.851s] writing manifest file 'BoatController.egg-info/SOURCES.txt'
+[0.852s] running build_ext
+[0.852s] Creating /home/dinesh/ros2_ws/install/BoatController/lib/python3.10/site-packages/BoatController.egg-link (link to .)
+[0.852s] Installing positionPublisher script to /home/dinesh/ros2_ws/install/BoatController/lib/BoatController
+[0.852s] Installing thrustPublisher script to /home/dinesh/ros2_ws/install/BoatController/lib/BoatController
+[0.853s] Installing thrustSubscriber script to /home/dinesh/ros2_ws/install/BoatController/lib/BoatController
+[0.853s] Installing velocityYawPublisher script to /home/dinesh/ros2_ws/install/BoatController/lib/BoatController
+[0.853s] Installing velocityYawSetter script to /home/dinesh/ros2_ws/install/BoatController/lib/BoatController
+[0.853s] Installing waypointSubscriber script to /home/dinesh/ros2_ws/install/BoatController/lib/BoatController
+[0.853s] 
+[0.853s] Installed /home/dinesh/ros2_ws/build/BoatController
+[0.853s] running symlink_data
+[0.881s] Invoked command in '/home/dinesh/ros2_ws/build/BoatController' returned '0': PYTHONPATH=/home/dinesh/ros2_ws/build/BoatController/prefix_override:/home/dinesh/ros2_ws/install/BoatController/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/dinesh/ros2_ws/build/BoatController/build --no-deps symlink_data

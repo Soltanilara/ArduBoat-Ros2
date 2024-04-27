@@ -1,0 +1,31 @@
+running egg_info
+creating ../../build/BoatController/BoatController.egg-info
+writing ../../build/BoatController/BoatController.egg-info/PKG-INFO
+writing dependency_links to ../../build/BoatController/BoatController.egg-info/dependency_links.txt
+writing entry points to ../../build/BoatController/BoatController.egg-info/entry_points.txt
+writing requirements to ../../build/BoatController/BoatController.egg-info/requires.txt
+writing top-level names to ../../build/BoatController/BoatController.egg-info/top_level.txt
+writing manifest file '../../build/BoatController/BoatController.egg-info/SOURCES.txt'
+reading manifest file '../../build/BoatController/BoatController.egg-info/SOURCES.txt'
+writing manifest file '../../build/BoatController/BoatController.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/dinesh/ros2_ws/build/BoatController/build
+creating /home/dinesh/ros2_ws/build/BoatController/build/lib
+creating /home/dinesh/ros2_ws/build/BoatController/build/lib/BoatController
+copying BoatController/__init__.py -> /home/dinesh/ros2_ws/build/BoatController/build/lib/BoatController
+running install
+running install_lib
+creating /home/dinesh/ros2_ws/install/BoatController/lib/python3.10/site-packages/BoatController
+copying /home/dinesh/ros2_ws/build/BoatController/build/lib/BoatController/__init__.py -> /home/dinesh/ros2_ws/install/BoatController/lib/python3.10/site-packages/BoatController
+byte-compiling /home/dinesh/ros2_ws/install/BoatController/lib/python3.10/site-packages/BoatController/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/dinesh/ros2_ws/install/BoatController/share/ament_index
+creating /home/dinesh/ros2_ws/install/BoatController/share/ament_index/resource_index
+creating /home/dinesh/ros2_ws/install/BoatController/share/ament_index/resource_index/packages
+copying resource/BoatController -> /home/dinesh/ros2_ws/install/BoatController/share/ament_index/resource_index/packages
+copying package.xml -> /home/dinesh/ros2_ws/install/BoatController/share/BoatController
+running install_egg_info
+Copying ../../build/BoatController/BoatController.egg-info to /home/dinesh/ros2_ws/install/BoatController/lib/python3.10/site-packages/BoatController-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/dinesh/ros2_ws/build/BoatController/install.log'

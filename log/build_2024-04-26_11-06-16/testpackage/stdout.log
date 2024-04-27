@@ -1,0 +1,31 @@
+running egg_info
+creating ../../build/testpackage/testpackage.egg-info
+writing ../../build/testpackage/testpackage.egg-info/PKG-INFO
+writing dependency_links to ../../build/testpackage/testpackage.egg-info/dependency_links.txt
+writing entry points to ../../build/testpackage/testpackage.egg-info/entry_points.txt
+writing requirements to ../../build/testpackage/testpackage.egg-info/requires.txt
+writing top-level names to ../../build/testpackage/testpackage.egg-info/top_level.txt
+writing manifest file '../../build/testpackage/testpackage.egg-info/SOURCES.txt'
+reading manifest file '../../build/testpackage/testpackage.egg-info/SOURCES.txt'
+writing manifest file '../../build/testpackage/testpackage.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/dinesh/ros2_ws/build/testpackage/build
+creating /home/dinesh/ros2_ws/build/testpackage/build/lib
+creating /home/dinesh/ros2_ws/build/testpackage/build/lib/testpackage
+copying testpackage/__init__.py -> /home/dinesh/ros2_ws/build/testpackage/build/lib/testpackage
+running install
+running install_lib
+creating /home/dinesh/ros2_ws/install/testpackage/lib/python3.10/site-packages/testpackage
+copying /home/dinesh/ros2_ws/build/testpackage/build/lib/testpackage/__init__.py -> /home/dinesh/ros2_ws/install/testpackage/lib/python3.10/site-packages/testpackage
+byte-compiling /home/dinesh/ros2_ws/install/testpackage/lib/python3.10/site-packages/testpackage/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/dinesh/ros2_ws/install/testpackage/share/ament_index
+creating /home/dinesh/ros2_ws/install/testpackage/share/ament_index/resource_index
+creating /home/dinesh/ros2_ws/install/testpackage/share/ament_index/resource_index/packages
+copying resource/testpackage -> /home/dinesh/ros2_ws/install/testpackage/share/ament_index/resource_index/packages
+copying package.xml -> /home/dinesh/ros2_ws/install/testpackage/share/testpackage
+running install_egg_info
+Copying ../../build/testpackage/testpackage.egg-info to /home/dinesh/ros2_ws/install/testpackage/lib/python3.10/site-packages/testpackage-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/dinesh/ros2_ws/build/testpackage/install.log'

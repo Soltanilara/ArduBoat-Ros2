@@ -1,0 +1,57 @@
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import Int32MultiArray
+import threading
+
+class ThreadedInputPublisher(Node):
+    def __init__(self):
+        super().__init__('threaded_input_publisher')
+        self.ThrustPublisher_ = self.create_publisher(Int32MultiArray, 'Thrusters', 10)
+        #self.leftThrustPublisher_ = self.create_publisher(Int32, 'leftThruster', 10)
+        self.timer = self.create_timer(0.01, self.timer_callback)  # Publish at 100 Hz
+        self.latest_rightThrustValue = 1500  # Default message
+        self.latest_leftThrustValue = 1500  # Default message
+        self.lock = threading.Lock()  # Ensure thread-safety when accessing latest_input
+
+    def timer_callback(self):
+        with self.lock:
+            msg = Int32MultiArray()
+            msg.data = [self.latest_rightThrustValue, self.latest_leftThrustValue]
+            #msgLeft.data = int(self.latest_leftThrustValue)
+            self.ThrustPublisher_.publish(msg)
+            #self.leftThrustPublisher_.publish(msgLeft)
+            #self.get_logger().info(f'Published Data')
+
+
+    def listen_for_input(self):
+        while True:
+            temp_input1 = input("Enter new value for Right Thruster: ")
+            temp_input2 = input("Enter new value for Left Thruster: ")
+            temp_input1 = int(temp_input1)
+            temp_input2 = int(temp_input2)
+            if(temp_input1 > 2000 or temp_input1 < 1000 or temp_input2 > 2000 or temp_input2 < 1000):
+                self.get_logger().info(f'Publishing: Invalid input. Range must be within 1000 to 2000')
+            else:
+                with self.lock:
+                    self.latest_rightThrustValue = temp_input1  # Safely update the latest input
+                    self.latest_leftThrustValue = temp_input2  # Safely update the latest input
+
+    def start_input_thread(self):
+        input_thread = threading.Thread(target=self.listen_for_input)
+        input_thread.daemon = True
+        input_thread.start()
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = ThreadedInputPublisher()
+    node.start_input_thread()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
