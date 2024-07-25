@@ -175,3 +175,5 @@ To set up the simulation environment on Ubuntu 22.04 LTS x86 system, follow thes
     ```
    - Open QGroundControl on Ubuntu. The app should automatically connect to Ardupilot running. 
 
+4. **Run ROS Node**: 
+    - Run desired publisher and subscriber based on commands above. 
