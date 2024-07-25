@@ -20,10 +20,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "thrustSubscriber = BoatController.thrustPublisher:main",
-            "thrustPublisher = BoatController.asyncPublisher:main",
+            "thrustSubscriber = BoatController.thrustSubscriber:main",
+            "thrustPublisher = BoatController.thrustPublisher:main",
             "positionPublisher = BoatController.positionReader:main",
-            "waypointSubscriber = BoatController.destinationSetter:main",
+            "positionSubscriber = BoatController.destinationSetter:main",
             "velocityYawPublisher = BoatController.velocityYawSetter:main",
             "velocityYawSetter = BoatController.velocityYawControl:main",
         ],

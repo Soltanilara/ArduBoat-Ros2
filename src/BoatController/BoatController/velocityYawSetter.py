@@ -1,14 +1,27 @@
+"""
+This is a ROS2 Publisher node to publish velocity and heading in body frame to topic /VelocityYaw.The user need to input desinred velocity in m/sec and heading in degrees
+"""
+
+"""
+Filename: velocityYawSetter.py
+Description: ROS2 Publisher for publishing velocity and heading setpoints.
+Author: Dinesh Kumar
+Date: 2024-04
+"""
+
+#standard Library imports for ROS2
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
 import math
-class DestinationPublisher(Node):
+
+class DestinationPublisher(Node): #publisher node class
     def __init__(self):
         super().__init__('position_publisher')
         self.SetValuePublisher_ = self.create_publisher(Float32MultiArray, 'VelocityYaw', 10)
-        self.listen_for_input()
         self.latest_Vx = 0
         self.latest_Yaw = 0
+        self.listen_for_input()
 
     def publish_values(self):
         msg = Float32MultiArray()
@@ -16,13 +29,13 @@ class DestinationPublisher(Node):
         self.SetValuePublisher_.publish(msg)
 
 
-    def listen_for_input(self):
+    def listen_for_input(self): #Waits for User function and then publishes value to topic
         while True:
             temp_input1 = input("Enter desired velocity and Yaw: ") ##insert checks for values
             #temp_input2 = input("Enter new value for Left Thruster: ")
             str_values = temp_input1.split(',')
             try:
-                self.latest_Vx = float(str_values[0])  # Safely update the latest inputs
+                self.latest_Vx = float(str_values[0])  
                 self.latest_Yaw = float(str_values[1]) 
                 self.latest_Yaw = math.radians(self.latest_Yaw) 
                 self.publish_values()

@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix
-from PositionContoller import mavlink_utilities
+from BoatController import mavlink_utilities
 
 class GPSSubscriber(Node):
     def __init__(self,connection):
