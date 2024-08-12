@@ -1,14 +1,13 @@
 """
 This is a ROS2 publisher node to read user input values and publish the values to topic /Thrusters.
-The user needs to input right and left thruster values to the boat, which must range between 900 to 2000. A value of 
-1500 is neutral, below 1500 backward rotation and above 1500 is forward rotating. Note these are expected trim values, 
+The user needs to input right and left thruster values to the boat, which must range between 900 to 2000. 
+A value of 1500 is neutral, below 1500 backward rotation and above 1500 is forward rotating.
+Note these are expected trim values, 
 actual values may differ by +- 10. 
-
 
 The program is multi-threaded to allow user input value at their preference. This means that, 
 the publisher will always publish the last user value to the topic
 """
-
 """
 Filename: asyncPublisher.py
 Description: ROS2 publisher for sending individual thruster value to ardupilot

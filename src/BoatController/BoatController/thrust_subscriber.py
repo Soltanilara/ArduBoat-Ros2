@@ -1,6 +1,8 @@
 """
-This is a ROS2 Subscriber node to implement values from /Thrusters to the thrusters on the boat. The subscriber reads from the topic, and simulates a RC Overide using mavlink.
-This program is not compatible with the simulation environment, as it is not possible to simulate motors as RCIN on Ardupilot simulation
+This is a ROS2 Subscriber node to implement values from /Thrusters to the thrusters on the boat. 
+The subscriber reads from the topic, and simulates a RC Overide using mavlink.
+This program is not compatible with the simulation environment, as it is not 
+possible to simulate motors as RCIN on Ardupilot simulation
 The program is multi-threaded to allow user input value at their preference. This means that, 
 the subscriber will always output the last value on the topic. Read comments/ Readme for available connection strings. 
 """
@@ -11,7 +13,6 @@ Description: ROS2 subscribing for sending individual thruster value to ardupilot
 Author: Dinesh Kumar
 Date: 2024-04
 """
-
 #Standard Imports for ROS2
 import rclpy
 from rclpy.node import Node

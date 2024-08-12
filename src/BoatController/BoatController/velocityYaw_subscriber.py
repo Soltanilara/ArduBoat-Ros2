@@ -58,7 +58,8 @@ def main(args=None):
     rclpy.init(args=args)
     url = "tcp:localhost:5762" 
     """
-    url changes according to use case. If in simulation use "tcp:localhost:5762" or udp:localhost:14550. If on physical boat use either "/dev/ttyUSBx" or "/dev/ttyACMx" or "/dev/ttyTHSx"
+    url changes according to use case. If in simulation use "tcp:localhost:5762" or udp:localhost:14550. 
+    If on physical boat use either "/dev/ttyUSBx" or "/dev/ttyACMx" or "/dev/ttyTHSx"
     """ 
     # Setup MAVLink connection and Thruster Controller
     boat = mavlink_utilities.setup_connection(url)

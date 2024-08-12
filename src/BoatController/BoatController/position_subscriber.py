@@ -1,5 +1,6 @@
 """
-This is a ROS2 Subscriber node to navigate to destination through mavlink into Ardupilot. Destination is read of topic /Destination. 
+This is a ROS2 Subscriber node to navigate to destination through
+mavlink into Ardupilot. Destination is read of topic /Destination. 
 """
 
 """

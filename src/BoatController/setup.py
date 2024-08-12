@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
-
 package_name = 'BoatController'
+
 
 setup(
     name=package_name,
@@ -14,18 +14,18 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='dinesh',
-    maintainer_email='dinesh@todo.todo',
-    description='TODO: Package description',
+    maintainer_email='dskumar@ucdavis.edu',
+    description='TODO: Follow Readme',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "thrustSubscriber = BoatController.thrustSubscriber:main",
-            "thrustPublisher = BoatController.thrustPublisher:main",
-            "positionPublisher = BoatController.positionReader:main",
-            "positionSubscriber = BoatController.destinationSetter:main",
-            "velocityYawPublisher = BoatController.velocityYawSetter:main",
-            "velocityYawSetter = BoatController.velocityYawControl:main",
+            "thrustSubscriber = BoatController.thrust_subscriber:main",
+            "thrustPublisher = BoatController.thrust_publisher:main",
+            "positionPublisher = BoatController.position_publisher:main",
+            "positionSubscriber = BoatController.position_subscriber:main",
+            "velocityYawPublisher = BoatController.velocityYaw_publisher:main",
+            "velocityYawSetter = BoatController.velocityYaw_subscriber:main",
         ],
     },
 )

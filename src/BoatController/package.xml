@@ -3,8 +3,8 @@
 <package format="3">
   <name>BoatController</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="dinesh@todo.todo">dinesh</maintainer>
+  <description>TODO: Run publisher and subscriber nodes as mentioned in the readme file</description>
+  <maintainer email="dskumar@ucdavis.edu">dinesh</maintainer>
   <license>TODO: License declaration</license>
 
   <test_depend>ament_copyright</test_depend>
