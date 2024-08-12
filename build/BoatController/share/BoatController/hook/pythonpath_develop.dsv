@@ -1,1 +1,1 @@
-prepend-non-duplicate;PYTHONPATH;/home/dinesh/ros2_ws/build/BoatController
+prepend-non-duplicate;PYTHONPATH;/home/dinesh/ArduBoat-Ros2/build/BoatController

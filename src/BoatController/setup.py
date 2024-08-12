@@ -22,7 +22,7 @@ setup(
         'console_scripts': [
             "thrustSubscriber = BoatController.thrust_subscriber:main",
             "thrustPublisher = BoatController.thrust_publisher:main",
-            "positionPublisher = BoatController.position_publisher:main",
+            "position_Publisher = BoatController.position_publisher:main",
             "positionSubscriber = BoatController.position_subscriber:main",
             "velocityYawPublisher = BoatController.velocityYaw_publisher:main",
             "velocityYawSetter = BoatController.velocityYaw_subscriber:main",

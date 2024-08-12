@@ -19,7 +19,7 @@ Date: 2024-04
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int32MultiArray
-
+import sys
 #Library import of threading
 import threading
 
@@ -27,6 +27,7 @@ import threading
 class ThreadedInputPublisher(Node):  
     def __init__(self):
         super().__init__('threaded_input_publisher')
+        self.running = True
         self.ThrustPublisher_ = self.create_publisher(Int32MultiArray, 'Thrusters', 10)
         self.timer = self.create_timer(0.01, self.timer_callback)  # Publish at 100 Hz
         self.latest_rightThrustValue = 1500  # Default neutral values
@@ -38,20 +39,28 @@ class ThreadedInputPublisher(Node):
             msg = Int32MultiArray()
             msg.data = [self.latest_rightThrustValue, self.latest_leftThrustValue]
             self.ThrustPublisher_.publish(msg)
-
+    
+    def signal_handler(self, sig, frame):
+        self.get_logger().info('Shutdown')
+        self.running = False
+        self.destroy_node()
+        sys.exit()
 
     def listen_for_input(self): #Always on loop, waiting for user input
-        while True:
-            temp_input1 = input("Enter new value for Right Thruster: ")
-            temp_input2 = input("Enter new value for Left Thruster: ")
-            temp_input1 = int(temp_input1)
-            temp_input2 = int(temp_input2)
-            if(temp_input1 > 2000 or temp_input1 < 1000 or temp_input2 > 2000 or temp_input2 < 1000):
-                self.get_logger().info(f'Publishing: Invalid input. Range must be within 1000 to 2000')
-            else:
-                with self.lock:
-                    self.latest_rightThrustValue = temp_input1  # Safely update the latest input
-                    self.latest_leftThrustValue = temp_input2  # Safely update the latest input
+        while self.running:
+            try:
+                temp_input1 = input("Enter new value for Right Thruster: ")
+                temp_input2 = input("Enter new value for Left Thruster: ")
+                temp_input1 = int(temp_input1)
+                temp_input2 = int(temp_input2)
+                if(temp_input1 > 2000 or temp_input1 < 1000 or temp_input2 > 2000 or temp_input2 < 1000):
+                    self.get_logger().info(f'Publishing: Invalid input. Range must be within 1000 to 2000')
+                else:
+                    with self.lock:
+                        self.latest_rightThrustValue = temp_input1  # Safely update the latest input
+                        self.latest_leftThrustValue = temp_input2  # Safely update the latest input
+            except KeyboardInterrupt:
+                self.signal_handler(None, None)
 
     def start_input_thread(self): #Handle Threads
         input_thread = threading.Thread(target=self.listen_for_input)

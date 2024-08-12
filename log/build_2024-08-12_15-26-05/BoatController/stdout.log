@@ -1,0 +1,27 @@
+running develop
+running egg_info
+creating BoatController.egg-info
+writing BoatController.egg-info/PKG-INFO
+writing dependency_links to BoatController.egg-info/dependency_links.txt
+writing entry points to BoatController.egg-info/entry_points.txt
+writing requirements to BoatController.egg-info/requires.txt
+writing top-level names to BoatController.egg-info/top_level.txt
+writing manifest file 'BoatController.egg-info/SOURCES.txt'
+reading manifest file 'BoatController.egg-info/SOURCES.txt'
+writing manifest file 'BoatController.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/dinesh/ArduBoat-Ros2/install/BoatController/lib/python3.10/site-packages/BoatController.egg-link (link to .)
+Installing positionSubscriber script to /home/dinesh/ArduBoat-Ros2/install/BoatController/lib/BoatController
+Installing position_Publisher script to /home/dinesh/ArduBoat-Ros2/install/BoatController/lib/BoatController
+Installing thrustPublisher script to /home/dinesh/ArduBoat-Ros2/install/BoatController/lib/BoatController
+Installing thrustSubscriber script to /home/dinesh/ArduBoat-Ros2/install/BoatController/lib/BoatController
+Installing velocityYawPublisher script to /home/dinesh/ArduBoat-Ros2/install/BoatController/lib/BoatController
+Installing velocityYawSetter script to /home/dinesh/ArduBoat-Ros2/install/BoatController/lib/BoatController
+
+Installed /home/dinesh/ArduBoat-Ros2/build/BoatController
+running symlink_data
+creating /home/dinesh/ArduBoat-Ros2/install/BoatController/share/ament_index
+creating /home/dinesh/ArduBoat-Ros2/install/BoatController/share/ament_index/resource_index
+creating /home/dinesh/ArduBoat-Ros2/install/BoatController/share/ament_index/resource_index/packages
+symbolically linking /home/dinesh/ArduBoat-Ros2/build/BoatController/resource/BoatController -> /home/dinesh/ArduBoat-Ros2/install/BoatController/share/ament_index/resource_index/packages
+symbolically linking /home/dinesh/ArduBoat-Ros2/build/BoatController/package.xml -> /home/dinesh/ArduBoat-Ros2/install/BoatController/share/BoatController

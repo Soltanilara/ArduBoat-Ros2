@@ -19,6 +19,7 @@ from rclpy.node import Node
 from rclpy.executors import SingleThreadedExecutor
 from std_msgs.msg import Int32MultiArray
 from rclpy.callback_groups import MutuallyExclusiveCallbackGroup
+import sys
 
 #Importing Class for handling communication to Ardupilot
 from BoatController import mavlink_utilities
@@ -32,8 +33,16 @@ class ThrusterController(Node):
         self.boat = boat
         # Subscribers
         self.create_subscription(Int32MultiArray, '/Thrusters', self.thruster_callback, 10) #change to thruster callback
-        
+    
+    def signal_handler(self, sig, frame):
+        self.get_logger().info('Shutdown')
+        #self.running = False
+        self.destroy_node()
+        sys.exit()
+
     def thruster_callback(self, msg):
+        if KeyboardInterrupt:
+            self.signal_handler(None, None)
         mavlink_utilities.arm_vehicle(self.boat) #Arm Vehicle
         self.thruster_values  = msg.data
         self.get_logger().info(f'Right Thruster: {msg.data[0]}, Left Thruster: {msg.data[1]}') #print value to screen
@@ -44,7 +53,7 @@ class ThrusterController(Node):
         WARNING: ALL SAFETY CHECKS ARE ABANDONED. PROCEED AT YOUR OWN RISK
         """
         mavlink_utilities.control_rc_channels(self.boat, int(self.thruster_values[0]),int(self.left_thruster_value[1]))
-
+            
 
 def main(args=None): 
     rclpy.init(args=args)
