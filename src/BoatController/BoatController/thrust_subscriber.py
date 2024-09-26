@@ -41,44 +41,36 @@ class ThrusterController(Node):
         sys.exit()
 
     def thruster_callback(self, msg):
-        if KeyboardInterrupt:
-            self.signal_handler(None, None)
-        mavlink_utilities.arm_vehicle(self.boat) #Arm Vehicle
+        #mavlink_utilities.arm_vehicle(self.boat) #Arm Vehicle
         self.thruster_values  = msg.data
-        self.get_logger().info(f'Right Thruster: {msg.data[0]}, Left Thruster: {msg.data[1]}') #print value to screen
-        self.publish_thruster_values()
+        self.get_logger().info(f'Right Thruster: {self.thruster_values[0]}, Left Thruster: {self.thruster_values[1]}') #print value to screen
+        mavlink_utilities.control_rc_channels(self.boat, (msg.data[0]), (msg.data[1]) )
+        #self.publish_thruster_values(msg)
        
-    def publish_thruster_values(self): #Function to command thruster. 
+    def publish_thruster_values(self,msg): #Function to command thruster. 
         """
         WARNING: ALL SAFETY CHECKS ARE ABANDONED. PROCEED AT YOUR OWN RISK
         """
-        mavlink_utilities.control_rc_channels(self.boat, int(self.thruster_values[0]),int(self.left_thruster_value[1]))
+       
             
 
 def main(args=None): 
     rclpy.init(args=args)
     # Create a standalone Node to access parameters
-    node = Node('thruster_controller_node')
-    url = '/dev/ttyACM0' # dev/ttyUSBx or /dev/ttyACMx or /dev/ttyTHSx. Replace x with number. Refer Readme.md for setup
-
+    #url = '/dev/ttyACM0' # dev/ttyUSBx or /dev/ttyACMx or /dev/ttyTHSx. Replace x with number. Refer Readme.md for setup
+    url = "tcp:localhost:5762"
     #Setup MAVLink connection and Thruster Controller
     boat = mavlink_utilities.setup_connection(url) #creating the boat class for connection
     thruster_controller = ThrusterController(boat) #creating the subscriber node
-    
+    rclpy.spin(thruster_controller)
     # Executor setup
     executor = rclpy.executors.SingleThreadedExecutor()
     executor.add_node(thruster_controller)
-
-    try:
-        executor.spin()
-    except KeyboardInterrupt:
-        pass
-    finally:
+    executor.spin()
         # Cleanup
-        mavlink_utilities.disarm_vehicle(boat)
-        thruster_controller.destroy_node()
-        node.destroy_node()
-        rclpy.shutdown()
+    #mavlink_utilities.disarm_vehicle(boat)
+    thruster_controller.destroy_node()
+    #rclpy.shutdown()
 
 if __name__ == '__main__':
     main()

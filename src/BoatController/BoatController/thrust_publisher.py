@@ -39,15 +39,9 @@ class ThreadedInputPublisher(Node):
             msg = Int32MultiArray()
             msg.data = [self.latest_rightThrustValue, self.latest_leftThrustValue]
             self.ThrustPublisher_.publish(msg)
-    
-    def signal_handler(self, sig, frame):
-        self.get_logger().info('Shutdown')
-        self.running = False
-        self.destroy_node()
-        sys.exit()
 
     def listen_for_input(self): #Always on loop, waiting for user input
-        while self.running:
+        while True:
             try:
                 temp_input1 = input("Enter new value for Right Thruster: ")
                 temp_input2 = input("Enter new value for Left Thruster: ")
@@ -74,7 +68,7 @@ def main(args=None): #Main Loop
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        pass
+        node.get_logger().info('Shutting down gracefully...')
     finally:
         node.destroy_node()
         rclpy.shutdown()

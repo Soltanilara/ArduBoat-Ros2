@@ -3,7 +3,8 @@
 <package format="3">
   <name>BoatController</name>
   <version>0.0.0</version>
-  <description>TODO: Run publisher and subscriber nodes as mentioned in the readme file</description>
+  <description>TODO: Run publisher and subscriber nodes as 
+  mentioned in the readme file</description>
   <maintainer email="dskumar@ucdavis.edu">dinesh</maintainer>
   
   <license>TODO: License declaration</license>
@@ -11,7 +12,6 @@
   <exec_depend>example_interfaces</exec_depend>
   <exec_depend>rclpy</exec_depend>
   <exec_depend>rcl_interfaces</exec_depend>
-   <exec_depend>rcl_interfaces</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
