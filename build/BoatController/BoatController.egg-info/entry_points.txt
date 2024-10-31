@@ -1,8 +1,0 @@
-[console_scripts]
-position_publisher = BoatController.position_publisher:main
-position_subscriber = BoatController.position_subscriber:main
-thrust_publisher = BoatController.thrust_publisher:main
-thrust_subscriber = BoatController.thrust_subscriber:main
-velocityYaw_publisher = BoatController.velocityYaw_publisher:main
-velocityYaw_subscriber = BoatController.velocityYaw_subscriber:main
-
