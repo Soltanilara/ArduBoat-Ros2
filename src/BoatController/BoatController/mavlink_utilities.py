@@ -34,7 +34,7 @@ def set_position(connection, destination):
                         20, 0, 0, 0, 0, 0, 0, 1.57, 0.5))
 
 def setX_velocity_and_yaw(connection, boot_time, Vx, Yaw):
-   """Send velocity and yaw command."""
+   """Send velocity and yaw command. Accepts velocity in body X and Yaw in body Z"""
    connection.mav.set_position_target_global_int_send(
         int(1e3 * (time.time() - boot_time)), # ms since boot
         connection.target_system, connection.target_component,
@@ -44,14 +44,14 @@ def setX_velocity_and_yaw(connection, boot_time, Vx, Yaw):
         afx=0, afy=0, afz=0, yaw=Yaw, yaw_rate=0)
 
 def control_rc_channels(connection, chan1, chan2):
-    """Control the RC channels over a specified duration."""
+    """Control the RC channels over a specified duration. Can modify to add more channel override"""
     connection.mav.rc_channels_override_send(
             connection.target_system,
             connection.target_component,
-            chan2,  # chan1_raw (e.g.left motor)
-            chan1,   # chan2_raw 
+            chan1,  # chan1_raw (right motor)
+            chan2,   # chan2_raw (left motor) 
             1500,   # chan3_raw 
-            1500,  # chan4_raw (e.g.right motor)
+            1500,  # chan4_raw 
             2000,      # chan5_raw
             0,      # chan6_raw
             0,      # chan7_raw
@@ -59,6 +59,7 @@ def control_rc_channels(connection, chan1, chan2):
         )
 
 def getHomeLocation(connection):
+    """Return Home location. Can be used for Return to Launch"""
     connection.mav.command_long_send(
         connection.target_system,
         connection.target_component,

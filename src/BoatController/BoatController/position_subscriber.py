@@ -41,13 +41,13 @@ class DestinationCommand(Node): #Subscriber Class for reading topic and navigati
 
 def main(args=None):
     rclpy.init(args=args)
-    url = "tcp:localhost:5762"
+    url = "tcp:localhost:5762" #Change according to purpose. Read below or README for more information
     """
     url changes according to use case. If in simulation use "tcp:localhost:5762" or udp:localhost:14550. If on physical boat use either "/dev/ttyUSBx" or "/dev/ttyACMx" or "/dev/ttyTHSx"
     """ 
     # Setup MAVLink connection and Position Controller
     boat = mavlink_utilities.setup_connection(url)
-    home = mavlink_utilities.getHomeLocation(boat)
+    home = mavlink_utilities.getHomeLocation(boat) #Gets home Location
     positionSetter = DestinationCommand(home,boat)
     rclpy.spin(positionSetter)
     positionSetter.destroy_node()

@@ -8,30 +8,30 @@ This is a ROS2 Publisher node to publish to topic /Destination.
 The user inputs a latitude and longitude value for each desired waypoint.
 """
 """
-Filename: positionReader.py
+Filename: position_publisher.py
 Description: ROS2 publisher for sending waypoint commands.
 Author: Dinesh Kumar
 Date: 2024-04
-License: 
+License: MIT License
 """
 
 #Publisher Class for reading user input and publishing to topic
 class DestinationPublisher(Node): 
     def __init__(self):
+        """ Initalize position publisher publishing to Destination """
         super().__init__('position_publisher')
         self.PositionPublisher_ = self.create_publisher(Float32MultiArray, 'Destination', 10)
         self.running = True
         self.listen_for_input()
         
-    # Publishes value to Destination
     def publish_values(self):
-        
+        """Publishes value to Destination """
         msg = Float32MultiArray()
         msg.data = [self.latest_latitude, self.latest_longitude]
         self.PositionPublisher_.publish(msg)
 
-    # This function waits for user input and then publishes the inputs to the topic.
     def listen_for_input(self): 
+        """ This function waits for user input and then publishes the inputs to the topic. """
         while self.running:
             try:
                 temp_input1 = input("Enter desired latitude and longitude: ")

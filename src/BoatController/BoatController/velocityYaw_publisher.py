@@ -7,20 +7,21 @@ from std_msgs.msg import Float32MultiArray
 
 """
 This is a ROS2 Publisher node to publish velocity and heading in body frame to 
-topic /VelocityYaw.The user need to input desinred 
+topic /VelocityYaw.The user needs to input desired
 velocity in m/sec and heading in degrees
 """
 """
-Filename: velocityYawSetter.py
+Filename: velocityYaw_publisher.py
 Description: ROS2 Publisher for publishing velocity and heading setpoints.
 Author: Dinesh Kumar
 Date: 2024-04
+License: MIT License
 """
 
 class DestinationPublisher(Node): #publisher node class
     
-    
     def __init__(self):
+        """ Setup Publisher"""
         super().__init__('position_publisher')
         self.running = True
         self.SetValuePublisher_ = self.create_publisher(Float32MultiArray, 'VelocityYaw', 10)
@@ -29,11 +30,13 @@ class DestinationPublisher(Node): #publisher node class
         self.listen_for_input()
 
     def publish_values(self):
+        """ Publish Values to Topic """
         msg = Float32MultiArray()
         msg.data = [self.latest_Vx, self.latest_Yaw]
         self.SetValuePublisher_.publish(msg)
 
-    def listen_for_input(self): #Waits for User function and then publishes value to topic
+    def listen_for_input(self): #
+        """ Waits for User function and then publishes value to topic  """
         while self.running:
             temp_input1 = input("Enter desired velocity and Yaw: ") ##insert checks for values
             #temp_input2 = input("Enter new value for Left Thruster: ")
@@ -47,7 +50,6 @@ class DestinationPublisher(Node): #publisher node class
                 self.get_logger().info(f'Publishing: Invalid input.Please enter float values seperated by comma')
 
 def main(args=None):
-    
     rclpy.init(args=args)
     node = DestinationPublisher()
     try:
