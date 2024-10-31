@@ -61,8 +61,8 @@ def main(args=None):
             node.destroy_node()
             rclpy.shutdown()
     except (KeyboardInterrupt, ExternalShutdownException):
-            mavlink_utilities.disarm_vehicle(boat)
-            node.destroy_node()
+            print("Exiting . . .")
+
                 
 
 if __name__ == '__main__':

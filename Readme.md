@@ -100,12 +100,12 @@ Future works involves modifying it to use publisher/subscriber over network.
 
 > **⚠️ Attention!**
 >
-> **The developers of this code, understand and advise that this method be only used if the development team is confident of its works and well aware of their goals. This method is generally advised against if you are a newbie developer with ArduPilot/pymavlink as most safety checks are overridden.**
+> **The developers of this code, understand and advise that this method be only used if the development team is confident of its works and well aware of their goals. This method is generally advised against if you are a newbie developer with ArduPilot/pymavlink as most safety checks are overridden. This mode can WORK even when system in DISARMED**
 
 - This mode is void of any control loop of ardupilot and directly commands the left and right thruster by mapping each  
        thruster to a channel on the RC. Under guided mode, this value is sent from the companion computer instead of remote control. 
 
-- Assuming motors are connected to servos 1 and 3 of CubeOrange please ensure your servo outputs are mapped as follows:
+- Assuming motors are connected to servos 1 and 3 of CubeOrange please ensure your servo outputs are mapped as follows under parameters:
     - Servo1_Function: RCIN_1
     - Servo2_Function: RCIN_4
 
@@ -125,10 +125,10 @@ Future works involves modifying it to use publisher/subscriber over network.
     ```sh
     ros2 run BoatController waypointSubscriber 
     ```
-- On prompting, enter desired Lattitude & Longitude.
+- On prompting, enter desired Lattitude & Longitude. **Remember to Arm the USV and shift into GUIDED mode**
 
 ## **3. Velocity and Yaw Control** 
-- This mode commands a velocity and Yaw(degrees) to the Ardupilot in body frame. Assuming motors are connected to servos 1 and 3 of CubeOrange please ensure your servo outputs are mapped as follows:
+- This mode commands a velocity(m/sec) and Yaw(degrees) to the Ardupilot in body frame. Assuming motors are connected to servos 1 and 3 of CubeOrange please ensure your servo outputs are mapped as follows:
     - Servo1_Function: Thruster Left
     - Servo2_Function: Thruster Right
 
@@ -141,7 +141,7 @@ Future works involves modifying it to use publisher/subscriber over network.
     ```sh
     ros2 run BoatController velocityYawSetter 
     ```
-- On prompting, enter desired Velocity & Yaw(degrees).
+- On prompting, enter desired Velocity & Yaw(degrees). **Remember to Arm the USV and shift into GUIDED mode**
 
 # Simulation Setup
 Simulation setup allows for the user to test the whole codestack on the computer, to verify its working and testing before deploying it on the actual system. This simulation stack involves, simulating arduRover at a particular location, communication with an companion computer and status monitoring on QGroundControl. This setup simulates the USV deployment. 
@@ -158,7 +158,7 @@ To set up the simulation environment on Ubuntu 22.04 LTS x86 system, follow thes
 1. **Install Simulation Tools**:
    - Install Simulation Tools using https://ardupilot.org/dev/docs/setting-up-sitl-on-linux.html. 
 
-   ###  Note: Though the article mentions it is tested only until 18.04, the following works fine on Ubuntu 22.04. 
+   ###  Note: Though the article above mentions it is tested only until 18.04, the following works fine on Ubuntu 22.04. 
 
 2. **Configure Simulation**:
    - This ensure the ardupilot tools are properly sourced. 
@@ -171,9 +171,14 @@ To set up the simulation environment on Ubuntu 22.04 LTS x86 system, follow thes
    - Open Simulation 
    ```sh
    cd ardupilot
-   sim_vehicle.py -v Rover --console --map  -L <Your Location>
+   sim_vehicle.py -v Rover -f motorboat-skid -L <location> --map --console
     ```
    - Open QGroundControl on Ubuntu. The app should automatically connect to Ardupilot running. 
+   - Specifying vehicle is necessary with -v. Frame type can be omitted, but if differential steering is needed '-f' is required. Location, console, map are all optional, although good to have them on there. To get help, try 
+   ```
+   cd ardupilot
+   sim_vehicle.py -h
+   ```
 
 4. **Run ROS Node**: 
     - Run desired publisher and subscriber based on commands above. 

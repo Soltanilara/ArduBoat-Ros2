@@ -18,6 +18,7 @@ import rclpy
 from rclpy.node import Node
 from rclpy.executors import SingleThreadedExecutor
 from std_msgs.msg import Int32MultiArray
+from rclpy.executors import ExternalShutdownException
 from rclpy.callback_groups import MutuallyExclusiveCallbackGroup
 import sys
 from BoatController import mavlink_utilities
@@ -46,24 +47,30 @@ class ThrusterController(Node):
             
 
 def main(args=None): 
-    rclpy.init(args=args)
-    url = "tcp:localhost:5762" #Change according to purpose. Read below or README for more information
-    """
-    url changes according to use case. If in simulation use "tcp:localhost:5762" or udp:localhost:14550. If on physical boat use either "/dev/ttyUSBx" or "/dev/ttyACMx" or "/dev/ttyTHSx"
-    
-    """ 
-    #Setup MAVLink connection and Thruster Controller
-    boat = mavlink_utilities.setup_connection(url) #creating the boat class for connection
-    thruster_controller = ThrusterController(boat) #creating the subscriber node
-    rclpy.spin(thruster_controller)
+    try:
+        rclpy.init(args=args)
+        url = "tcp:localhost:5762" #Change according to purpose. Read below or README for more information
+        """
+        url changes according to use case. If in simulation use "tcp:localhost:5762" or udp:localhost:14550. If on physical boat use either "/dev/ttyUSBx" or "/dev/ttyACMx" or "/dev/ttyTHSx"
+        
+        """ 
+        print("made some changes to code now")
+        #Setup MAVLink connection and Thruster Controller
+        boat = mavlink_utilities.setup_connection(url) #creating the boat class for connection
+        thruster_controller = ThrusterController(boat) #creating the subscriber node
+        rclpy.spin(thruster_controller)
     # Executor setup
-    executor = rclpy.executors.SingleThreadedExecutor()
-    executor.add_node(thruster_controller)
-    executor.spin()
+        executor = rclpy.executors.SingleThreadedExecutor()
+        executor.add_node(thruster_controller)
+        executor.spin()
+        mavlink_utilities.disarm_vehicle(boat)
+        thruster_controller.destroy_node()
+        rclpy.shutdown()
         # Cleanup
-    #mavlink_utilities.disarm_vehicle(boat)
-    thruster_controller.destroy_node()
-    #rclpy.shutdown()
+    except (KeyboardInterrupt, ExternalShutdownException):
+        print("Exiting . . .")
+
+    
 
 if __name__ == '__main__':
     main()
@@ -71,23 +78,3 @@ if __name__ == '__main__':
 
 
 
-
-# def main(args=None):
-#     #setting up mavlink communications
-#     url = "/dev/ttyACM2"
-#     boat = mavlink_utilities.setup_connection(url)
-#     rclpy.init(args=args)
-#     thruster_controller = ThrusterController(boat)
-#     executor = SingleThreadedExecutor()
-#     executor.add_node(thruster_controller)
-
-#     try:
-#         executor.spin()
-#     except KeyboardInterrupt:
-#         pass
-#     finally:
-#         thruster_controller.destroy_node()
-#         rclpy.shutdown()
-
-# if __name__ == '__main__':
-#     main()

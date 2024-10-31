@@ -4,6 +4,7 @@ import math
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
+from rclpy.executors import ExternalShutdownException
 
 """
 This is a ROS2 Publisher node to publish velocity and heading in body frame to 
@@ -50,13 +51,12 @@ class DestinationPublisher(Node): #publisher node class
                 self.get_logger().info(f'Publishing: Invalid input.Please enter float values seperated by comma')
 
 def main(args=None):
-    rclpy.init(args=args)
-    node = DestinationPublisher()
     try:
+        rclpy.init(args=args)
+        node = DestinationPublisher()
         rclpy.spin(node)
-    except KeyboardInterrupt:
-        node.get_logger().info('Shutting down gracefully...')
-    finally:    
+    except (KeyboardInterrupt, ExternalShutdownException):
+        node.get_logger().info('Shutting down...')  
         node.destroy_node()
         rclpy.shutdown()
 

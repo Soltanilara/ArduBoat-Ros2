@@ -3,7 +3,6 @@ setup.cfg
 setup.py
 BoatController/__init__.py
 BoatController/mavlink_utilities.py
-BoatController/positionSubscriber.py
 BoatController/position_publisher.py
 BoatController/position_subscriber.py
 BoatController/thrust_publisher.py
