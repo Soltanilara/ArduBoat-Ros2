@@ -1,6 +1,7 @@
 # ROS2 ArduBoat Control
 
-The following are ROS2 nodes for different control methods developed for the USV paper titled *Design and Implementation of a Dual Uncrewed Surface Vessel Platform for Bathymetry Research under High-flow Conditions* . Outlined here are setup instructions for running the ROS2 nodes, setup procedures, and setup on simulation. The framework is tested on ROS2 Humble on Ubuntu 22.04 LTS running on Jetson Orin Nano. 
+The following are ROS2 nodes for different control methods developed for the USV paper titled *Design and Implementation of a Dual Uncrewed Surface Vessel Platform for Bathymetry Research under High-flow Conditions*. 
+Outlined here are setup instructions for running the ROS2 nodes, setup procedures, and setup on simulation. The framework is tested on ROS2 Humble on Ubuntu 22.04 LTS running on Jetson Orin Nano. 
 
 # Table of Contents
 
