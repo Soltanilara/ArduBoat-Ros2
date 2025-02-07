@@ -178,8 +178,18 @@ To set up the simulation environment on Ubuntu 22.04 LTS x86 system, follow thes
    - Specifying vehicle is necessary with -v. Frame type can be omitted, but if differential steering is needed '-f' is required. Location, console, map are all optional, although good to have them on there. To get help, try 
    ```
    cd ardupilot
+   
    sim_vehicle.py -h
    ```
 
 4. **Run ROS Node**: 
-    - Run desired publisher and subscriber based on commands above. 
+    - Run desired publisher and subscriber based on commands above.
+
+# Examples
+
+1. **Direct Propellor Control**: 
+   - A video titled USV_Direct_Thruster_Control_Example in the Video folder demonstrates the use of gaming pedals and a steering wheel to control the NAC USV using the provided ROS nodes.
+2. **Velocity and Heading Control**: 
+   - Experiment Evaluation section of the paper demonstrates this ROS node control.
+3. **Trajectory Control**: 
+   - Experiment Evaluation section of the paper demonstrates this ROS node control.
