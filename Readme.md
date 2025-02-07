@@ -12,8 +12,8 @@ Outlined here are setup instructions for running the ROS2 nodes, setup procedure
 - [Control Mode Explanation](#control-mode-explanation)
 - [Simulation Setup](#simulation-setup)
 - [Examples](#examples)
-- [Contributing](#contributing)
-- [License](#license)
+<!-- - [Contributing](#contributing) -->
+<!-- - [License](#license) -->
 
 # Project Description
 
